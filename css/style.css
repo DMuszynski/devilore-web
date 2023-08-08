@@ -1,0 +1,13 @@
+@import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    width: 5vw;
+    min-height: 100vh;
+    background: #11101d;
+}

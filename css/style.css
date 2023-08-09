@@ -84,10 +84,26 @@ body{
     width: 100%;
     padding: 10px 6px;
     height: 60px;
-
+    background: #1b1b31;
 }
 #sidebar #profile_content #profile_details {
     display: flex;
     align-items: center;
 
+}
+#sidebar #profile_content #profile_details img {
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+#sidebar #profile_content #profile_details #name_job{
+    margin-left: 10px;
+}
+#sidebar #profile_content #profile_details #name_job #name{
+    font-size: 15px;
+    font-weight: 400;
+}
+#sidebar #profile_content #profile_details #name_job #job{
+    font-size: 12px;
 }

@@ -1,13 +1,93 @@
-@import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css');
-
+/* Google Font Poppins import link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
-
-nav {
-    width: 5vw;
+body{
+    position: relative;
     min-height: 100vh;
-    background: #11101d;
+    width:100%;
+    overflow: hidden;
+}
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #11101d;
+    padding: 6px 14px;
+    color: #fff;
+}
+#sidebar #logo-content #logo {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+}
+#sidebar #logo-content #logo i {
+    font-size: 30px;
+    margin-right: 5px;
+}
+#sidebar #logo-content #logo #logo-name {
+    font-size: 20px;
+    font-weight: 400;
+}
+#sidebar #logo-content #btn {
+    position: absolute;
+    left: 90%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width:50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+}
+#sidebar nav {
+    margin-top:20px;
+}
+#sidebar nav ul li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin: 0 5px;
+    list-style: none;
+    line-height: 50px;
+}
+#sidebar nav ul li a{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+}
+#sidebar nav ul li a:hover {
+    color: #11101d;
+    background: #fff;
+}
+#sidebar nav ul li a i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+ }
+#sidebar #profile_content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 6px;
+    height: 60px;
+
+}
+#sidebar #profile_content #profile_details {
+    display: flex;
+    align-items: center;
+
 }

@@ -20,28 +20,37 @@
         <nav>
             <ul class="nav_list">
                 <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search...">
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
                     <a href="#">
                         <i class='bx bx-home-alt'></i>
-                        <span class="links_name">Strona Główna</span>
+                        <span class="links_name">Home</span>
                     </a>
+                    <span class="tooltip">Home</span>
                 </li>
                 <li>
                     <a href="#">
                         <i class='bx bxs-book-content'></i>
                         <span class="links_name">Kursy</span>
                     </a>
+                    <span class="tooltip">Kursy</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="pages/portfolio/portfolio.html">
                         <i class='bx bxs-user-detail'></i>
                         <span class="links_name">Portfolio</span>
                     </a>
+                    <span class="tooltip">Portfolio</span>
                 </li>
                 <li>
                     <a href="#">
                         <i class='bx bxs-chat'></i>
                         <span class="links_name">Kontakt</span>
                     </a>
+                    <span class="tooltip">Kontakt</span>
                 </li>
             </ul>
             </nav>
@@ -55,8 +64,21 @@
                 </div>
             </section>
     </aside>
-    <main>
-        cos
+    <main id="main-content">
+        Main content
     </main>
+
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector("#sidebar");
+        let searchBtn = document.querySelector(".bx-search");
+
+        btn.onclick = function() {
+            sidebar.classList.toggle("active");
+        }
+        searchBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>

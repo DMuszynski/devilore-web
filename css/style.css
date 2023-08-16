@@ -17,16 +17,27 @@ body{
     top: 0;
     left: 0;
     height: 100%;
-    width: 250px;
+    width: 78px;
     background-color: #11101d;
     padding: 6px 14px;
     color: #fff;
+    transition: all 0.5s ease;
+}
+#sidebar.active {
+    width: 240px;
 }
 #sidebar #logo-content #logo {
     display: flex;
     height: 50px;
     width: 100%;
     align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+#sidebar.active #logo-content #logo {
+    opacity: 1;
+    pointer-events: none;
 }
 #sidebar #logo-content #logo i {
     font-size: 30px;
@@ -38,7 +49,7 @@ body{
 }
 #sidebar #logo-content #btn {
     position: absolute;
-    left: 90%;
+    left: 50%;
     top: 6px;
     font-size: 20px;
     height: 50px;
@@ -46,6 +57,9 @@ body{
     text-align: center;
     line-height: 50px;
     transform: translateX(-50%);
+}
+#sidebar.active #logo-content #btn {
+    left: 90%;
 }
 #sidebar nav {
     margin-top:20px;
@@ -58,25 +72,86 @@ body{
     list-style: none;
     line-height: 50px;
 }
-#sidebar nav ul li a{
+#sidebar nav ul li .tooltip {
+    position: absolute;
+    left: 122px;
+    top: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    height: 35px;
+    width: 122px;
+    background: #fff;
+    line-height: 35px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    color: darkblue;
+    transition: 0s;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+}
+#sidebar.active nav ul li:hover .tooltip {
+    display: none;
+}
+#sidebar nav ul li:hover .tooltip {
+    transition: all 0.5s ease;
+    opacity: 1;
+    top: 50%;
+}
+#sidebar ul li input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    background: #1d1b31;
+    padding-left: 50px;
+    font-size: 18px;
+    color: #fff;
+}
+#sidebar ul li .bx-search {
+    position: absolute;
+    z-index: 99;
+    color: #fff;
+    font-size: 22px;
+}
+#sidebar ul li .bx-search:hover {
+    background: #fff;
+    color: #1d1b31;
+    transition: all 0.5s ease;
+}
+#sidebar nav ul li a {
     color: #fff;
     display: flex;
     align-items: center;
     text-decoration: none;
     transition: all 0.4s ease;
     border-radius: 12px;
+    white-space: nowrap;
 }
 #sidebar nav ul li a:hover {
     color: #11101d;
     background: #fff;
 }
-#sidebar nav ul li a i {
+#sidebar nav ul li i {
     height: 50px;
     min-width: 50px;
     border-radius: 12px;
     line-height: 50px;
     text-align: center;
- }
+}
+#sidebar nav ul li a .links_name {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+#sidebar.active nav ul li a .links_name {
+    opacity: 1;
+    pointer-events: auto;
+}
 #sidebar #profile_content {
     position: absolute;
     bottom: 0;
@@ -89,7 +164,15 @@ body{
 #sidebar #profile_content #profile_details {
     display: flex;
     align-items: center;
-
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: all 0.5s ease;
+}
+#sidebar.active #profile_content #profile_details {
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.5s ease;
 }
 #sidebar #profile_content #profile_details img {
     height: 45px;
@@ -97,13 +180,25 @@ body{
     object-fit: cover;
     border-radius: 12px;
 }
-#sidebar #profile_content #profile_details #name_job{
+#sidebar #profile_content #profile_details #name_job {
     margin-left: 10px;
 }
-#sidebar #profile_content #profile_details #name_job #name{
+#sidebar #profile_content #profile_details #name_job #name {
     font-size: 15px;
     font-weight: 400;
 }
-#sidebar #profile_content #profile_details #name_job #job{
+#sidebar #profile_content #profile_details #name_job #job {
     font-size: 12px;
+}
+#main-content {
+    position: absolute;
+    height: 100%;
+    left: 78px;
+    width: calc(100% - 78px);
+    transition: all 0.5s ease;
+    color: red;
+}
+#sidebar.active ~ #main-content {
+    width: calc(100% - 240px);
+    left: 240px;
 }

@@ -1,0 +1,12 @@
+#main-content {
+    position: absolute;
+    min-height: 100%;
+    left: 78px;
+    width: calc(100% - 78px);
+    transition: all 0.5s ease;
+    color: red;
+}
+sidebar-component.active ~ #main-content {
+    width: calc(100% - 240px);
+    left: 240px;
+}

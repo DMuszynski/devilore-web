@@ -6,7 +6,8 @@
     transition: all 0.5s ease;
     color: red;
 }
-sidebar-component.active ~ #main-content {
-    width: calc(100% - 240px);
-    left: 240px;
-}
+
+/*sidebar-component.active ~ #main-content {*/
+/*    width: calc(100% - 240px);*/
+/*    left: 240px;*/
+/*}*/

@@ -3,30 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Devilore Site</title>
+    <title>Web Developer - Damian Muszyński</title>
 
+    <!-- Local style links   -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/sidebar.css" rel="stylesheet">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="css/sticky-nav.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
 
+    <!-- Download style links   -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Sidebar with navigation    -->
-    <aside class="sidebar-component">
-        <header class="profile">
+    <!-- Navbar with global navigation  -->
+    <nav id="sticky-nav-component">
+        <div class="menu">
+            MENU
+        </div>
+        NAVIGACJA
+    </nav>
 
-        </header>
-        <nav class="navigation">
+    <section id="central-section">
+        <!-- Sidebar with local navigation  -->
+        <aside id="sidebar-component" class="active">
+            <section id="sticky-sidebar">
+                    MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            </section>
 
-        </nav>
-        <footer class="copyright">
+        </aside>
 
-        </footer>
-    </aside>
+        <!-- Main web content  -->
+        <main id="main-content">
+            MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </main>
+    </section>
 
-    <!-- Main web content  -->
-    <main>
+    <!-- Footer content - contact data, navigation panel  -->
+    <footer id="footer-component">
+        HEJ
+    </footer>
 
-    </main>
+    <script>
+        let sidebar = document.getElementById("sidebar-component");
+        let menu = document.querySelector(".menu");
+        menu.onclick = function () {
+            sidebar.classList.toggle("deactive");
+        }
+    </script>
 </body>
 </html>

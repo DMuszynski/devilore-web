@@ -1,8 +1,27 @@
-.sidebar-component {
-    position: fixed;
-    top:0;
+/* Rozwijany panel boczny z informacjami o twórcy i nawigacją wewnętrzną strony */
+#sidebar-component {
+    position: absolute;
+    top: 0;
     left: 0;
-    width: 25rem;
     height: 100%;
+    width: var(--sidebarSizeActive);
     background-color: var(--sidebarBGColor);
+    transition: 0.5s ease-in-out;
+    color: #fff;
+}
+/* Aktywacja/Deaktywacja panelu bocznego */
+#sidebar-component.deactive {
+    width: var(--sidebarSizeDeactive);
+}
+#sidebar-component.deactive ~ #main-content {
+    width: calc(100% - var(--sidebarSizeDeactive));
+    left: var(--sidebarSizeDeactive);
+}
+
+/* Przyklejany kontent panelu bocznego */
+#sidebar-component #sticky-sidebar {
+    position: sticky;
+    top: var(--stickynavSize);
+    height: calc(100vh - var(--stickynavSize));
+    overflow: hidden scroll;
 }

@@ -1,11 +1,17 @@
-#main-content {
-    position: absolute;
+#central-section {
+    position: relative;
     min-height: 100%;
-    left: 78px;
-    width: calc(100% - 78px);
-    transition: all 0.5s ease;
+    width: 100%;
+}
+#main-content {
+    position: relative;
+    width: calc(100% - var(--sidebarSizeActive));
+    left: var(--sidebarSizeActive);
+    transition: 0.5s ease-in-out;
     color: red;
 }
+
+
 
 /*sidebar-component.active ~ #main-content {*/
 /*    width: calc(100% - 240px);*/

@@ -2,58 +2,52 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web Developer - Damian Muszyński</title>
+    <title>Personal Portfolio - Damian Muszyński</title>
 
-    <!-- Local style links   -->
+    <!-- LOCAL CSS LINKS -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/sidebar.css" rel="stylesheet">
-    <link href="css/sticky-nav.css" rel="stylesheet">
+    <link href="css/sticky-navbar.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
 
-    <!-- Download style links   -->
+    <!-- OTHER DOWNLOAD CSS LINKS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar with global navigation  -->
-    <nav id="sticky-nav-component">
+    <!--  PASEK NAWIGACJI BOCZNEJ - SOCIAL MEDIA, ZMIANA TRYBU DARK/LIGHT MODE  -->
+    <side-option-bar></side-option-bar>
+
+    <!--     START NAVIGATION BAR - LOGO AND GLOBAL NAV LINKS  -->
+    <nav class="navbar-component">
         <div class="menu">
             MENU
         </div>
-        NAVIGACJA
     </nav>
+    <!--     STOP NAVIGATION BAR   -->
 
-    <section id="central-section">
-        <!-- Sidebar with local navigation  -->
-        <aside id="sidebar-component" class="active">
-            <section id="sticky-sidebar">
-                    MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            </section>
 
-        </aside>
+    <!-- START MAIN SECTION  -->
+    <main class="main-component">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </main>
+    <!-- STOP MAIN SECTION  -->
 
-        <!-- Main web content  -->
-        <main id="main-content">
-            MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            MAIN<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        </main>
-    </section>
 
-    <!-- Footer content - contact data, navigation panel  -->
-    <footer id="footer-component">
-        HEJ
-    </footer>
 
-    <script>
-        let sidebar = document.getElementById("sidebar-component");
-        let menu = document.querySelector(".menu");
-        menu.onclick = function () {
-            sidebar.classList.toggle("deactive");
-        }
-    </script>
+    <!-- START FOOTER - CONTACT DATA, NAV LINKS -->
+<!--    <footer class="footer-component">-->
+<!--        HEJ-->
+<!--    </footer>-->
+    <!-- STOP FOOTER - CONTACT DATA, NAV LINKS -->
+
+    <script src="components/sideOptionBar.js" type="text/javascript"></script>
+    <script src="components/notificationBar.js" type="text/javascript"></script>
 </body>
 </html>

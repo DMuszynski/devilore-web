@@ -1,25 +1,20 @@
 /* Google Font Poppins import link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 :root {
-    --bgColor: #f7f7f7;
-    --sidebarBGColor: #040b14;
-    --stickynavBGColor: #fff;
-    /*--textColor: #525252;*/
-    --textColor: #fff;
-    --themeColor: #00a78e;
-    --iconColor: #2c2f3f;
+    --first-color: #081b29;
+    --second-color: #112e42;
+    --third-color: #ededed;
+    --fourth-color: #00abf0;
 
-    --stickynavSize: 5rem;
-    --sidebarSizeActive: 25rem;
-    --sidebarSizeDeactive: 0rem;
-    --footerSize: 10rem;
-
+    --navbarSize: 6rem;
+    --footerSize: 30rem;
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -31,7 +26,50 @@ body {
     position: relative;
     min-height: 100vh;
     width:100%;
-    background-color: var(--bgColor);
+    background-color: var(--first-color);
+    color: var(--third-color);
 }
 
+@media screen and (min-width: 0px) and (orientation: portrait) or (orientation: landscape) {
+    html {  font-size: 35%; }
+}
 
+@media screen and (min-width: 320px) {
+    html {  font-size: 40%; }
+}
+
+@media screen and (min-width: 480px) {
+    html {  font-size: 45%; }
+}
+
+@media screen and (min-width: 600px) {
+    html {  font-size: 50%; }
+}
+
+@media screen and (min-width: 768px) {
+    html {  font-size: 55%; }
+}
+
+@media screen and (min-width: 900px) {
+    html {  font-size: 62.5%; }
+}
+
+@media screen and (min-width: 1024px) {
+    html {  font-size: 65%; }
+}
+
+@media screen and (min-width: 1200px) {
+    html {  font-size: 70%; }
+}
+
+@media screen and (min-width: 1600px) {
+    html {  font-size: 80%; }
+}
+
+@media screen and (min-width: 1920px) {
+    html {  font-size: 90%; }
+}
+
+@media screen and (min-width: 2560px) {
+    html {  font-size: 100%; }
+}

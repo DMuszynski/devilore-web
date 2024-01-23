@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Personal Portfolio - Damian Muszyński</title>
+    <title>Devilore - IT Coaching </title>
 
     <!-- LOCAL CSS LINKS -->
     <link href="css/style.css" rel="stylesheet">
@@ -14,18 +14,24 @@
 
     <!-- OTHER DOWNLOAD CSS LINKS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
-    <!--  PASEK NAWIGACJI BOCZNEJ - SOCIAL MEDIA, ZMIANA TRYBU DARK/LIGHT MODE  -->
-    <side-option-bar></side-option-bar>
 
-    <!--     START NAVIGATION BAR - LOGO AND GLOBAL NAV LINKS  -->
-    <nav class="navbar-component">
-        <div class="menu">
-            MENU
-        </div>
-    </nav>
-    <!--     STOP NAVIGATION BAR   -->
+
+    <!-- PASEK NAWIGACJI GŁÓWNEJ - LOGO ORAZ HIPERŁĄCZA DO PODSTRON APLIKACJI  -->
+    <header>
+        <section class="logo-container">
+            <a href="#" class="logo">Muszyński.</a>
+        </section>
+        <nav class="navbar-component">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
 
     <!-- START MAIN SECTION  -->
@@ -40,14 +46,15 @@
     <!-- STOP MAIN SECTION  -->
 
 
-
     <!-- START FOOTER - CONTACT DATA, NAV LINKS -->
 <!--    <footer class="footer-component">-->
 <!--        HEJ-->
 <!--    </footer>-->
     <!-- STOP FOOTER - CONTACT DATA, NAV LINKS -->
 
+    <!-- Components -->
+    <side-option-bar></side-option-bar>
+
     <script src="components/sideOptionBar.js" type="text/javascript"></script>
-    <script src="components/notificationBar.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+// PASEK NAWIGACJI BOCZNEJ - SOCIAL MEDIA, ZMIANA TRYBU DARK/LIGHT MODE  -->
 class SideOptionBar extends HTMLElement {
     constructor() {
         super();
@@ -10,7 +11,7 @@ class SideOptionBar extends HTMLElement {
     renderSideOptionBarComponent() {
         this.innerHTML = `
             <style>
-                .social-option-icons {
+                #social-option-icons {
                     display: inline-grid;
                     position: fixed;
                     top: 50%;
@@ -19,7 +20,7 @@ class SideOptionBar extends HTMLElement {
                     -ms-transform: translateY(-50%);
                     transform: translateY(-50%);
                 }
-                .social-option-icons a {
+                #social-option-icons a {
                     width: 3rem;
                     height: 3rem;
                     border-radius: 50%;
@@ -30,16 +31,19 @@ class SideOptionBar extends HTMLElement {
                     margin: 0.1rem;
                     transition: 0.4s;
                 }
-                .social-option-icons a:first-child {
+                #social-option-icons a:first-child {
                     margin-bottom: 4rem;
                 }
-                .social-option-icons a:last-child {
+                #social-option-icons a:last-child {
                     margin-top: 4rem;
                 }
-                .social-option-icons a:hover, .social-option-icons.darkmode a:first-child {
+                #social-option-icons a:hover, #social-option-icons[darkmode] a:first-child {
                     background-color: var(--fourth-color);
                 }
-                .social-option-icons:not(.darkmode) a:last-child {
+                #social-option-icons:not([darkmode]) a:hover {
+                    color: var(--first-color);
+                }
+                #social-option-icons:not([darkmode]) a:last-child {
                     background-color: var(--fourth-color);
                 }
                 
@@ -76,8 +80,8 @@ class SideOptionBar extends HTMLElement {
                 }
             </style>
             <body>
-                <section class="social-option-icons darkmode">
-                    <a href="#" data-tooltip="Tryb ciemny" class="dark">
+                <section id="social-option-icons" darkmode>
+                    <a href="#" data-tooltip="Tryb ciemny">
                         <i class='bx bx-moon'></i></a>
                     <a href="https://github.com/DMuszynski" data-tooltip="Github" target="_blank">
                         <i class='bx bxl-github'></i></a>
@@ -89,7 +93,7 @@ class SideOptionBar extends HTMLElement {
                         <i class='bx bxl-instagram'></i></a>
                     <a href="#" data-tooltip="Skopiuj mail" class="mail" onclick="copyMailLink()">
                         <i class='bx bxl-gmail'></i></a>
-                    <a href="#" data-tooltip="Tryb jasny" class="light" onclick="this.oncopy">
+                    <a href="#" data-tooltip="Tryb jasny" onclick="this.oncopy">
                         <i class='bx bx-sun'></i></a>
                 </section>
             </body>
@@ -127,18 +131,18 @@ function loadColorThemeFromLocalStorage() {
 }
 
 // Implementacja odczytywania przycisków dark/light mode i zmiana ich wartości w pamięci lokalnej po kliknięciu
-let darkModeButton = document.querySelector(".dark");
-let lightModeButton = document.querySelector(".light");
-let sideOptionBarElement = document.querySelector(".social-option-icons");
+let darkModeButton = document.querySelector("#social-option-icons a:first-child");
+let lightModeButton = document.querySelector("#social-option-icons a:last-child");
+let sideOptionBarElement = document.querySelector("#social-option-icons");
 
 darkModeButton.onclick = function () { handleChangeColorTheme('dark'); }
 lightModeButton.onclick = function () { handleChangeColorTheme('light'); }
 
 // Funkcja wykonuję zmianę schematu kolorów
 function handleChangeColorTheme(colorTheme) {
-    let darkModeAvailable = sideOptionBarElement.classList.contains('darkmode');
+    let darkModeAvailable = sideOptionBarElement.hasAttribute("darkmode");
     if ((colorTheme === 'dark' && !darkModeAvailable) || (colorTheme === 'light' && darkModeAvailable))
-        sideOptionBarElement.classList.toggle('darkmode');
+        sideOptionBarElement.toggleAttribute("darkmode")
 
     localStorage.setItem('theme', colorTheme);
     colorTheme !== 'light' ? setVariables(darkModeVariables) : setVariables(lightModeVariables);

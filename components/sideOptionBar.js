@@ -79,24 +79,23 @@ class SideOptionBar extends HTMLElement {
                     transform: translateY(0%);
                 }
             </style>
-            <body>
-                <section id="social-option-icons" darkmode>
-                    <a href="#" data-tooltip="Tryb ciemny">
-                        <i class='bx bx-moon'></i></a>
-                    <a href="https://github.com/DMuszynski" data-tooltip="Github" target="_blank">
-                        <i class='bx bxl-github'></i></a>
-                    <a href="https://www.linkedin.com/in/damian-muszy%C5%84ski-7b9a09173/" data-tooltip="LinkedIn" target="_blank">
-                        <i class='bx bxl-linkedin'></i> </a>
-                    <a href="https://www.facebook.com/dmuszynski.acc/" data-tooltip="Facebook" target="_blank">
-                        <i class='bx bxl-facebook'></i></a>
-                    <a href="https://www.instagram.com/_dmuszynski/" data-tooltip="Instagram" target="_blank">
-                        <i class='bx bxl-instagram'></i></a>
-                    <a href="#" data-tooltip="Skopiuj mail" class="mail" onclick="copyMailLink()">
-                        <i class='bx bxl-gmail'></i></a>
-                    <a href="#" data-tooltip="Tryb jasny" onclick="this.oncopy">
-                        <i class='bx bx-sun'></i></a>
-                </section>
-            </body>
+            
+            <aside id="social-option-icons" darkmode>
+                <a href="#" data-tooltip="Tryb ciemny">
+                    <i class='bx bx-moon'></i></a>
+                <a href="https://github.com/DMuszynski" data-tooltip="Github" target="_blank">
+                    <i class='bx bxl-github'></i></a>
+                <a href="https://www.linkedin.com/in/damian-muszy%C5%84ski-7b9a09173/" data-tooltip="LinkedIn" target="_blank">
+                    <i class='bx bxl-linkedin'></i> </a>
+                <a href="https://www.facebook.com/dmuszynski.acc/" data-tooltip="Facebook" target="_blank">
+                    <i class='bx bxl-facebook'></i></a>
+                <a href="https://www.instagram.com/_dmuszynski/" data-tooltip="Instagram" target="_blank">
+                    <i class='bx bxl-instagram'></i></a>
+                <a href="#" data-tooltip="Skopiuj mail" class="mail" onclick="copyMailLink()">
+                    <i class='bx bxl-gmail'></i></a>
+                <a href="#" data-tooltip="Tryb jasny" onclick="this.oncopy">
+                    <i class='bx bx-sun'></i></a>
+            </aside>
         `;
     }
 }

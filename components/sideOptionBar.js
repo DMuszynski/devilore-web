@@ -19,6 +19,7 @@ class SideOptionBar extends HTMLElement {
                     margin: 0 0.6rem;
                     -ms-transform: translateY(-50%);
                     transform: translateY(-50%);
+                    z-index: 999;
                 }
                 #social-option-icons a {
                     width: 3rem;
@@ -40,7 +41,7 @@ class SideOptionBar extends HTMLElement {
                 #social-option-icons a:hover, #social-option-icons[darkmode] a:first-child {
                     background-color: var(--fourth-color);
                 }
-                #social-option-icons:not([darkmode]) a:hover {
+                #social-option-icons:not([darkmode]) a:hover, #social-option-icons:not([darkmode]) a:last-child {
                     color: var(--first-color);
                 }
                 #social-option-icons:not([darkmode]) a:last-child {

@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Devilore - IT Coaching </title>
+    <title>Devilore - IT Coaching</title>
 
     <!-- LOCAL CSS LINKS -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/sticky-navbar.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
 
@@ -17,23 +16,6 @@
     <link href="img/favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
-    <!-- PASEK NAWIGACJI GŁÓWNEJ - LOGO ORAZ HIPERŁĄCZA DO PODSTRON APLIKACJI  -->
-    <nav>
-        <section id="logo-nav" class="flipX">
-            <a href="http://devilore.dev"><span id="logo" >Devilore.</span> IT Coaching</a>
-        </section>
-        <section id="menu-nav">
-            <ul>
-                <li><a active href="#home" class="ml2">Home</a></li>
-                <li><a href="#home" class="ml2">Java Tutorial</a></li>
-                <li><a href="#about">Clean Code</a></li>
-                <li><a href="#about">Programming Tool</a></li>
-                <li><a href="#skills">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </section>
-    </nav>
-
     <!-- START MAIN SECTION  -->
     <main class="main-component">
 
@@ -46,16 +28,11 @@
     </main>
     <!-- STOP MAIN SECTION  -->
 
-
-    <!-- START FOOTER - CONTACT DATA, NAV LINKS -->
-<!--    <footer class="footer-component">-->
-<!--        HEJ-->
-<!--    </footer>-->
-    <!-- STOP FOOTER - CONTACT DATA, NAV LINKS -->
-
     <!-- Components -->
+    <top-sticky-nav></top-sticky-nav>
     <side-option-bar></side-option-bar>
 
+    <script src="components/topStickyNav.js" type="text/javascript"></script>
     <script src="components/sideOptionBar.js" type="text/javascript"></script>
 </body>
 </html>

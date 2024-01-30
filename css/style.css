@@ -35,6 +35,27 @@ body {
     color: var(--third-color);
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--first-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--second-color);
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:active {
+    background: var(--fourth-color);
+}
+
 @media screen and (min-width: 0px) and (orientation: portrait) {  html {  font-size: 35%; }  }
 @media screen and (min-width: 0px) and (orientation: landscape) {  html {  font-size: 30%; }  }
 

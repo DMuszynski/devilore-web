@@ -11,7 +11,7 @@ class TopStickyNav extends HTMLElement {
     renderTopStickyNavComponent() {
         this.innerHTML = `
             <style>
-                nav {
+                #stickyNav {
                     position: fixed;
                     justify-content: space-between;
                     align-content: center;
@@ -24,39 +24,39 @@ class TopStickyNav extends HTMLElement {
                     box-shadow: 0 1px 8px 0 rgba(0,0,0,0.4);   
                 }
                 
-                nav, nav #menu-logo{
+                #stickyNav, #stickyNav #menu-logo{
                     display: flex;
                     align-items: center;
                     min-height: var(--navbarSize);
                 }
-                nav a {
+                #stickyNav a {
                     color: var(--third-color);
                     font-size: 1.5rem;
                     font-weight: 500;
                     position: relative;
                 }
                 
-                nav a, nav a:hover {
+                #stickyNav a, #stickyNav a:hover {
                     transition: 0.5s ease-in-out;
                 }
                 
-                nav a:hover {
+                #stickyNav a:hover {
                     color: var(--fourth-color);
                     filter: brightness(110%);
                 }
                 
-                nav #menu-list ul {
+                #stickyNav #menu-list ul {
                     margin: 0;
                     display: flex;
                     flex-direction: row;
                     list-style-type: none;
                 }
                 
-                nav #menu-list ul li{
+                #stickyNav #menu-list ul li{
                     margin: 1rem 1.6rem;
                 }
                 
-                nav #menu-list ul li a::after {
+                #stickyNav #menu-list ul li a::after {
                     content: '';
                     width: 0;
                     height: 0.3rem;
@@ -67,16 +67,16 @@ class TopStickyNav extends HTMLElement {
                     transition: 0.4s linear;
                 }
                 
-                nav #menu-list ul li a:hover::after {
+                #stickyNav #menu-list ul li a:hover::after {
                     width: 103%;
                 }
                 
-                nav #menu-list ul li a[active]{
+                #stickyNav #menu-list ul li a[active]{
                     color: var(--fourth-color);
                     font-weight: 600;
                 }
                 
-                nav #menu-icon {
+                #stickyNav #menu-icon {
                     display: none;
                     font-size: 2.2rem;
                     margin: 1rem 1.5rem;
@@ -88,7 +88,7 @@ class TopStickyNav extends HTMLElement {
                     transition: 0.5s ease-in-out;
                 }
                 
-                nav #menu-icon:hover {
+                #stickyNav #menu-icon:hover {
                     background-color: var(--fourth-color);
                     transition: 0.5s ease-in-out;
                     color: var(--first-color);
@@ -96,31 +96,31 @@ class TopStickyNav extends HTMLElement {
                 
                 @media screen and (max-width: 768px) {
                 
-                    nav #menu-list[collapsed = "true"] ul {
+                    #stickyNav #menu-list[collapsed = "true"] ul {
                         transition: all 1.2s linear;
                         margin-top: 0;
                         overflow: hidden;
                     }
                 
-                    nav #menu-list[collapsed = "false"] ul {
+                    #stickyNav #menu-list[collapsed = "false"] ul {
                         transition: all 1.2s linear;
                         margin-top: -70%;
                         overflow: hidden;
                     }
                 
-                    nav #menu-icon {
+                    #stickyNav #menu-icon {
                         display: block;
                         transition: all 0.5s linear;
                     }
                 
-                    nav #menu-list {
+                    #stickyNav #menu-list {
                         display: inline-flex;
                         align-items: center;
                         width: 100%;
                         justify-content: center;
                     }
                 
-                    nav #menu-list ul {
+                    #stickyNav #menu-list ul {
                         margin-top: -70%;
                         overflow: hidden;
                         flex-direction: column;
@@ -134,7 +134,7 @@ class TopStickyNav extends HTMLElement {
             </style>
             
             <!-- PASEK NAWIGACJI GŁÓWNEJ - LOGO ORAZ HIPERŁĄCZA DO PODSTRON APLIKACJI  -->
-            <nav>
+            <nav id="stickyNav">
                 <section id="menu-logo">
                     <a href="https://devilore.dev"><span id="logo" >Devilore.</span> IT Coaching</a>
                 </section>

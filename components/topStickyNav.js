@@ -96,11 +96,6 @@ class TopStickyNav extends HTMLElement {
                 
                 @media screen and (max-width: 768px) {
                 
-                    /*nav #menu-list[collapsed = "true"] {*/
-                    /*    margin: 1rem;*/
-                    /*    transition: all 0.3s linear;*/
-                    /*}*/
-                
                     nav #menu-list[collapsed = "true"] ul {
                         transition: all 1.2s linear;
                         margin-top: 0;
@@ -141,20 +136,13 @@ class TopStickyNav extends HTMLElement {
             <!-- PASEK NAWIGACJI GŁÓWNEJ - LOGO ORAZ HIPERŁĄCZA DO PODSTRON APLIKACJI  -->
             <nav>
                 <section id="menu-logo">
-                    <a href="http://devilore.dev"><span id="logo" >Devilore.</span> IT Coaching</a>
+                    <a href="https://devilore.dev"><span id="logo" >Devilore.</span> IT Coaching</a>
                 </section>
                 <section id="menu-icon" onclick="displayCollapsedMenu()">
                     <i class='bx bx-menu'></i>
                 </section>
                 <section id="menu-list">
-                    <ul>
-                        <li><a active href="#home">Home</a></li>
-                        <li><a href="#jtutorial">Java Tutorial</a></li>
-                        <li><a href="#cleanCode">Clean Code</a></li>
-                        <li><a href="#programmingtool">Programming Tool</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                    <!-- TU TRAFI ODPOWIEDNIA NAWIGACJA ZE SKRYPTU-->
                 </section>
             </nav>
         `;
@@ -163,6 +151,48 @@ class TopStickyNav extends HTMLElement {
 
 // Definicja górnego paska nawigacji
 customElements.define("top-sticky-nav", TopStickyNav);
+
+
+
+// WYBÓR TYPU NAWIGACJI - baseTopNav (Podstawowa), portfolioTopNav (dla podstrony z portfolio)
+
+
+// Odczyt typu nawigacji z tagu komponentu topStickyNav
+const navType = document.getElementsByTagName("top-sticky-nav").item(0).getAttribute("navType");
+
+// Ustawienie odpowiednich elementów w nawigacji na podstawie atrybutu type
+chooseMenuListElements(navType);
+
+// Funkcja wybierająca typ paska nawigacji na podstawie atrybutu
+function chooseMenuListElements(navType) {
+    const menuList = document.getElementById("menu-list");
+    switch (navType) {
+        case "baseTopNav":
+            const baseMenuListElement = '<ul>' +
+                '<li><a active href="#home">Home</a></li>' +
+                '<li><a href="#jtutorial">Java Tutorial</a></li>' +
+                '<li><a href="#cleanCode">Clean Code</a></li>' +
+                '<li><a href="#programmingtool">Programming Tool</a></li>' +
+                '<li><a href="#portfolio">Portfolio</a></li>' +
+                '<li><a href="#contact">Contact</a></li>' +
+                '</ul>';
+            menuList.innerHTML= baseMenuListElement;
+            break;
+        case "portfolioTopNav":
+            const portfolioMenuListElement = '<ul>' +
+                '<li><a href="#home">Home</a></li>' +
+                '<li><a href="#about">About</a></li>' +
+                '<li><a href="#services">Services</a></li>' +
+                '<li><a href="#skills">Skills</a></li>' +
+                '<li><a href="#contact">Contact</a></li>' +
+                '</ul>';
+            menuList.innerHTML= portfolioMenuListElement;
+            break;
+    }
+}
+
+
+//  HAMBURGER MENU
 
 // Inicjalizacja zawijania paska nawigacyjnego
 setCollapseNavOption();

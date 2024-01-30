@@ -11,7 +11,7 @@ class SideOptionBar extends HTMLElement {
     renderSideOptionBarComponent() {
         this.innerHTML = `
             <style>
-                #social-option-icons {
+                #sidebar-icons {
                     display: inline-grid;
                     position: fixed;
                     top: 50%;
@@ -21,7 +21,7 @@ class SideOptionBar extends HTMLElement {
                     transform: translateY(-50%);
                     z-index: 999;
                 }
-                #social-option-icons a {
+                #sidebar-icons a {
                     width: 3rem;
                     height: 3rem;
                     border-radius: 50%;
@@ -32,19 +32,19 @@ class SideOptionBar extends HTMLElement {
                     margin: 0.1rem;
                     transition: 0.4s;
                 }
-                #social-option-icons a:first-child {
+                #sidebar-icons a:first-child {
                     margin-bottom: 4rem;
                 }
-                #social-option-icons a:last-child {
+                #sidebar-icons a:last-child {
                     margin-top: 4rem;
                 }
-                #social-option-icons a:hover, #social-option-icons[darkmode] a:first-child {
+                #sidebar-icons a:hover, #sidebar-icons[darkmode] a:first-child {
                     background-color: var(--fourth-color);
                 }
-                #social-option-icons:not([darkmode]) a:hover, #social-option-icons:not([darkmode]) a:last-child {
+                #sidebar-icons:not([darkmode]) a:hover, #sidebar-icons:not([darkmode]) a:last-child {
                     color: var(--first-color);
                 }
-                #social-option-icons:not([darkmode]) a:last-child {
+                #sidebar-icons:not([darkmode]) a:last-child {
                     background-color: var(--fourth-color);
                 }
                 
@@ -81,21 +81,17 @@ class SideOptionBar extends HTMLElement {
                 }
             </style>
             
-            <aside id="social-option-icons" darkmode>
-                <a href="#" data-tooltip="Tryb ciemny">
-                    <i class='bx bx-moon'></i></a>
-                <a href="https://github.com/DMuszynski" data-tooltip="Github" target="_blank">
-                    <i class='bx bxl-github'></i></a>
-                <a href="https://www.linkedin.com/in/damian-muszy%C5%84ski-7b9a09173/" data-tooltip="LinkedIn" target="_blank">
-                    <i class='bx bxl-linkedin'></i> </a>
-                <a href="https://www.facebook.com/dmuszynski.acc/" data-tooltip="Facebook" target="_blank">
-                    <i class='bx bxl-facebook'></i></a>
-                <a href="https://www.instagram.com/_dmuszynski/" data-tooltip="Instagram" target="_blank">
-                    <i class='bx bxl-instagram'></i></a>
-                <a href="#" data-tooltip="Skopiuj mail" class="mail" onclick="copyMailLink()">
-                    <i class='bx bxl-gmail'></i></a>
-                <a href="#" data-tooltip="Tryb jasny" onclick="this.oncopy">
-                    <i class='bx bx-sun'></i></a>
+            <aside id="sidebar-icons" darkmode>
+<!--                <a href="https://github.com/DMuszynski" data-tooltip="Github" target="_blank">-->
+<!--                    <i class='bx bxl-github'></i></a>-->
+<!--                <a href="https://www.linkedin.com/in/damian-muszy%C5%84ski-7b9a09173/" data-tooltip="LinkedIn" target="_blank">-->
+<!--                    <i class='bx bxl-linkedin'></i> </a>-->
+<!--                <a href="https://www.facebook.com/dmuszynski.acc/" data-tooltip="Facebook" target="_blank">-->
+<!--                    <i class='bx bxl-facebook'></i></a>-->
+<!--                <a href="https://www.instagram.com/_dmuszynski/" data-tooltip="Instagram" target="_blank">-->
+<!--                    <i class='bx bxl-instagram'></i></a>-->
+<!--                <a href="#" data-tooltip="Skopiuj mail" class="mail" onclick="copyMailLink()">-->
+<!--                    <i class='bx bxl-gmail'></i></a>-->
             </aside>
         `;
     }
@@ -104,7 +100,58 @@ class SideOptionBar extends HTMLElement {
 // Definicja bocznego paska nawigacji
 customElements.define("side-option-bar", SideOptionBar);
 
+// WYBÓR TYPU PASKA NAWIGACJI BOCZNEJ - compilerOptionIcons (Podstawowa), socialOptionIcons (Portfolio)
+
+
+// Odczyt typu nawigacji z tagu komponentu topStickyNav
+const sidebarType = document.getElementsByTagName("side-option-bar").item(0).getAttribute("sidebarType");
+
+// Ustawienie odpowiednich elementów w pasku nawigacji na podstawie atrybutu sidebarType
+chooseSidebarElements(sidebarType);
+
+// Funkcja wybierająca typ paska nawigacji na podstawie atrybutu
+function chooseSidebarElements(sidebarType) {
+    const sidebarIconList = document.getElementById("sidebar-icons");
+
+    const darkModeElement = '<a href="#" data-tooltip="Tryb ciemny"><i class="bx bx-moon"></i></a>';
+    const lightModeElement = '<a href="#" data-tooltip="Tryb jasny" onclick="this.oncopy"><i class="bx bx-sun"></i></a>';
+    switch (sidebarType) {
+        case "compilerOptionIcons":
+            const compilerOptionListElement = darkModeElement +
+                '<a href="https://www.onlinegdb.com/online_java_compiler" data-tooltip="Kopilator Java" target="_blank"> ' +
+                    '<i class="bx bxl-java"></i></a>' +
+                '<a href="https://www.onlinegdb.com/online_c++_compiler" data-tooltip="Kompilator C++" target="_blank">' +
+                    '<i class="bx bxl-c-plus-plus"></i> </a>' +
+                '<a href="https://www.onlinegdb.com/online_php_interpreter" data-tooltip="Kompilator PHP" target="_blank">' +
+                    '<i class="bx bxl-php"></i></a>' +
+                '<a href="https://www.onlinegdb.com/online_javascript_rhino_interpreter" data-tooltip="Kompilator JavaScript" target="_blank">' +
+                    '<i class="bx bxl-javascript"></i></a>' +
+                '<a href="https://sqliteonline.com/" data-tooltip="Kompilator SQL" target="_blank">' +
+                    '<i class="bx bxs-data"></i></a>' + lightModeElement;
+            sidebarIconList.innerHTML += compilerOptionListElement;
+            break;
+        case "socialOptionIcons":
+            const socialOptionListElement = darkModeElement +
+                '<a href="https://github.com/DMuszynski" data-tooltip="Github" target="_blank"> ' +
+                '<i class="bx bxl-github"></i></a>' +
+                '<a href="https://www.linkedin.com/in/damian-muszy%C5%84ski-7b9a09173/" data-tooltip="LinkedIn" target="_blank">' +
+                '<i class="bx bxl-linkedin"></i> </a>' +
+                '<a href="https://www.facebook.com/dmuszynski.acc/" data-tooltip="Facebook" target="_blank">' +
+                '<i class="bx bxl-facebook"></i></a>' +
+                '<a href="https://www.instagram.com/_dmuszynski/" data-tooltip="Instagram" target="_blank">' +
+                '<i class="bx bxl-instagram"></i></a>' +
+                '<a href="#" data-tooltip="Skopiuj mail" class="mail" onClick="copyMailLink()">' +
+                '<i class="bx bxl-gmail"></i></a>' + lightModeElement;
+            sidebarIconList.innerHTML += socialOptionListElement;
+            break;
+    }
+}
+
+
+
 // Zmiana trybu wyświetlania treści dark/light mode
+
+
 
 // Definicja tablic z dostępnymi schematami kolorów dla strony
 const root = document.querySelector(':root');
@@ -131,9 +178,9 @@ function loadColorThemeFromLocalStorage() {
 }
 
 // Implementacja odczytywania przycisków dark/light mode i zmiana ich wartości w pamięci lokalnej po kliknięciu
-let darkModeButton = document.querySelector("#social-option-icons a:first-child");
-let lightModeButton = document.querySelector("#social-option-icons a:last-child");
-let sideOptionBarElement = document.querySelector("#social-option-icons");
+let darkModeButton = document.querySelector("#sidebar-icons a:first-child");
+let lightModeButton = document.querySelector("#sidebar-icons a:last-child");
+let sideOptionBarElement = document.querySelector("#sidebar-icons");
 
 darkModeButton.onclick = function () { handleChangeColorTheme('dark'); }
 lightModeButton.onclick = function () { handleChangeColorTheme('light'); }
@@ -148,6 +195,7 @@ function handleChangeColorTheme(colorTheme) {
     colorTheme !== 'light' ? setVariables(darkModeVariables) : setVariables(lightModeVariables);
 }
 
+
 // Funkcja kopiowania adresu mailowego
 function copyMailLink() {
     let emailAddress = "d.muszynski.acc@gmail.com";
@@ -159,3 +207,5 @@ window.onload = () => {
     let savedTheme = this.loadColorThemeFromLocalStorage();
     this.handleChangeColorTheme(savedTheme);
 };
+
+

@@ -5,7 +5,14 @@ class TopStickyNav extends HTMLElement {
     }
 
     connectedCallback() {
+        // RENDEROWANIE PASKA NAWIGACJI GÓRNEJ
         this.renderTopStickyNavComponent();
+
+        // ODCZYT WYBRANEGO RODZAJU NAWIGACJI GÓRNEJ
+        const navType = document.getElementsByTagName("top-sticky-nav").item(0).getAttribute("navType");
+
+        // USTAWIENIE LISTY NAWIGACYJNEJ NA PODSTAWIE WYBRANEGO TYPU
+        this.chooseMenuListElements(navType);
     }
 
     renderTopStickyNavComponent() {
@@ -147,50 +154,38 @@ class TopStickyNav extends HTMLElement {
             </nav>
         `;
     }
+
+    // WYBÓR RODZAJU PASKA NAWIGACJI - baseTopNav (Podstawowa), portfolioTopNav (dla podstrony z portfolio)
+    chooseMenuListElements(navType) {
+        const menuList = document.getElementById("menu-list");
+        switch (navType) {
+            case "baseTopNav":
+                const baseMenuListElement = '<ul>' +
+                    '<li><a active href="#home">Home</a></li>' +
+                    '<li><a href="#jtutorial">Java Tutorial</a></li>' +
+                    '<li><a href="#cleanCode">Clean Code</a></li>' +
+                    '<li><a href="#programmingtool">Programming Tool</a></li>' +
+                    '<li><a href="#portfolio">Portfolio</a></li>' +
+                    '<li><a href="#contact">Contact</a></li>' +
+                    '</ul>';
+                menuList.innerHTML= baseMenuListElement;
+                break;
+            case "portfolioTopNav":
+                const portfolioMenuListElement = '<ul>' +
+                    '<li><a href="#home">Home</a></li>' +
+                    '<li><a href="#about">About</a></li>' +
+                    '<li><a href="#services">Services</a></li>' +
+                    '<li><a href="#skills">Skills</a></li>' +
+                    '<li><a href="#contact">Contact</a></li>' +
+                    '</ul>';
+                menuList.innerHTML= portfolioMenuListElement;
+                break;
+        }
+    }
 }
 
 // Definicja górnego paska nawigacji
 customElements.define("top-sticky-nav", TopStickyNav);
-
-
-
-// WYBÓR TYPU NAWIGACJI - baseTopNav (Podstawowa), portfolioTopNav (dla podstrony z portfolio)
-
-
-// Odczyt typu nawigacji z tagu komponentu topStickyNav
-const navType = document.getElementsByTagName("top-sticky-nav").item(0).getAttribute("navType");
-
-// Ustawienie odpowiednich elementów w nawigacji na podstawie atrybutu type
-chooseMenuListElements(navType);
-
-// Funkcja wybierająca typ paska nawigacji na podstawie atrybutu
-function chooseMenuListElements(navType) {
-    const menuList = document.getElementById("menu-list");
-    switch (navType) {
-        case "baseTopNav":
-            const baseMenuListElement = '<ul>' +
-                '<li><a active href="#home">Home</a></li>' +
-                '<li><a href="#jtutorial">Java Tutorial</a></li>' +
-                '<li><a href="#cleanCode">Clean Code</a></li>' +
-                '<li><a href="#programmingtool">Programming Tool</a></li>' +
-                '<li><a href="#portfolio">Portfolio</a></li>' +
-                '<li><a href="#contact">Contact</a></li>' +
-                '</ul>';
-            menuList.innerHTML= baseMenuListElement;
-            break;
-        case "portfolioTopNav":
-            const portfolioMenuListElement = '<ul>' +
-                '<li><a href="#home">Home</a></li>' +
-                '<li><a href="#about">About</a></li>' +
-                '<li><a href="#services">Services</a></li>' +
-                '<li><a href="#skills">Skills</a></li>' +
-                '<li><a href="#contact">Contact</a></li>' +
-                '</ul>';
-            menuList.innerHTML= portfolioMenuListElement;
-            break;
-    }
-}
-
 
 //  HAMBURGER MENU
 
@@ -211,8 +206,8 @@ function setCollapseNavOption() {
         document.getElementById("menu-list").toggleAttribute("collapsed", true);
 }
 
-// Funkcja ustawia wartość zawijaniego paska nawigacyjnego i decyduje czy ma być wyświetlony czy nie
-function displayCollapsedMenu(){
+// Funkcja sprawdza aktualny stan formy wyświetlenia paska nawigacyjnego i decyduje czy ma być rozwijany czy nie
+function displayCollapsedMenu() {
     let menuListElement = document.getElementById("menu-list");
     let isCollapsed = menuListElement.hasAttribute("collapsed");
     let collapsedValue = menuListElement.getAttribute("collapsed").valueOf();

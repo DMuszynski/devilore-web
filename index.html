@@ -14,17 +14,23 @@
 
     <!-- OTHER DOWNLOAD LINKS LOCATION -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="img/favicon.ico" rel="icon" type="image/x-icon">
 </head>
-<body>
-    <header>
-        <img src="img/wallpaper.jpg" alt="wallpaper">
+<body darkmode>
+    <header id="header-container">
+        <div id="header-mask">
+            <section>
+                <div class="word" style="color:white"></div>
+            </section>
+            <section>
+                <div class="word" ></div>
+            </section>
+        </div>
     </header>
     <!-- START MAIN SECTION  -->
     <main class="main-component">
-
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        NAPIS
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -36,7 +42,58 @@
     <top-sticky-nav navType="baseTopNav"></top-sticky-nav>
     <side-option-bar sidebarType="compilerOptionIcons"></side-option-bar>
 
-    <script src="components/topStickyNav.js" type="text/javascript"></script>
-    <script src="components/sideOptionBar.js" type="text/javascript"></script>
+    <script src="script/components/topStickyNav.js" type="text/javascript"></script>
+    <script src="script/components/sideOptionBar.js" type="module"></script>
+    <script src="script/components/headerComponent.js" type="module"></script>
+    <script src="script/globalScript.js" type="module"></script>
+
+    <script>
+        var words = ['Programowanie w', 'Java', 'PHP', 'C++', 'JavaScript'],
+            part,
+            i = 0,
+            offset = 0,
+            len = words.length,
+            forwards = true,
+            skip_count = 0,
+            skip_delay = 15,
+            speed = 70;
+        var wordflick = function () {
+            setInterval(function () {
+                if (forwards) {
+                    if (offset >= words[i].length) {
+                        ++skip_count;
+                        if (skip_count == skip_delay) {
+                            forwards = false;
+                            skip_count = 0;
+                        }
+                    }
+                }
+                else {
+                    if (offset == 0) {
+                        forwards = true;
+                        i++;
+                        offset = 0;
+                        if (i >= len) {
+                            i = 0;
+                        }
+                    }
+                }
+                part = words[i].substr(0, offset);
+                if (skip_count == 0) {
+                    if (forwards) {
+                        offset++;
+                    }
+                    else {
+                        offset--;
+                    }
+                }
+                $('.word').text(part);
+            },speed);
+        };
+
+        // $(document).ready(function () {
+            wordflick();
+        // });
+    </script>
 </body>
 </html>

@@ -110,6 +110,21 @@ class HeaderComponent extends HTMLElement {
                     letter-spacing: 0.3rem;
                 }
                 
+                #fav-slider{
+                    position: absolute;
+                    bottom: 0;
+                    right: 5rem;
+                    font-size: 4rem;
+                    color: var(--first-color);
+                    cursor: pointer;
+                    transition: .5s ease-in-out;
+                }
+                
+                 #fav-slider:hover {
+                    color: var(--fourth-color);
+                    transition: .5s ease-in-out;
+                }
+                
                 @keyframes fade {
                     from {opacity: .5}
                     to {opacity: 1}
@@ -162,6 +177,10 @@ class HeaderComponent extends HTMLElement {
         
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
                 <a class="next" onclick="plusSlides(1)">❯</a>
+                
+                <div id="fav-slider">
+                    <i class='bx bxs-heart'></i>
+                </div>
             </div>
         </header>
 

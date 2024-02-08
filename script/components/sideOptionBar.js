@@ -20,6 +20,7 @@ class SideOptionBar extends HTMLElement {
 
     renderSideOptionBarComponent() {
         this.innerHTML = `
+            <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
             <style>
                 #sidebar-icons {
                     display: inline-grid;

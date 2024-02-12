@@ -1,4 +1,5 @@
-.footer-component {
+#footer-component {
+    clear: both;
     position: relative;
     height: var(--footerSize);
     width: 100%;

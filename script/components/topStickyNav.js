@@ -29,6 +29,7 @@ class TopStickyNav extends HTMLElement {
                     transform: translate(calc(50vw - 50%));
                     background-color: var(--first-color);
                     box-shadow: 0 1px 8px 0 rgba(0,0,0,0.4);   
+                    z-index: 100;
                 }
                 
                 #stickyNav, #stickyNav #menu-logo{

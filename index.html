@@ -16,22 +16,47 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body darkmode>
-
-    <header-component></header-component>
-
-    <!-- START MAIN SECTION  -->
-<!--    <main class="main-component">-->
-<!--        <div class="word">TEKST</div>-->
-<!--        NAPIS-->
-<!--        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
-<!--        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
-<!--        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
-<!--    </main>-->
-    <!-- STOP MAIN SECTION  -->
-
     <!-- Components -->
+    <header-component></header-component>
     <top-sticky-nav navType="baseTopNav"></top-sticky-nav>
     <side-option-bar sidebarType="compilerOptionIcons"></side-option-bar>
+
+    <main id="main-container">
+        <article id="main-article">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit
+            Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit
+            Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        </article>
+        <nav id="main-nav" collapsed="false">
+            dasdasd
+            <section id="view-button" onclick="toggleNav()">
+                <i class='bx bx-menu'></i>
+            </section>
+        </nav>
+    </main>
+
+    <footer id="footer-component">
+
+    </footer>
+
+    <script>
+        function toggleNav() {
+            var mainnav = document.getElementById("main-nav");
+            if(mainnav.getAttribute("collapsed") === "true")
+                document.getElementById("main-nav").setAttribute("collapsed", "false");
+            else
+                document.getElementById("main-nav").setAttribute("collapsed", "true");
+        }
+
+
+    </script>
 
     <!--  SCRIPTS DEFINITION COMPONENTS  -->
     <script src="script/components/topStickyNav.js" type="text/javascript"></script>

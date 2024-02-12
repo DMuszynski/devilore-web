@@ -9,7 +9,6 @@ class HeaderComponent extends HTMLElement {
     }
 
     renderSideOptionBarComponent() {
-
         this.innerHTML = `
             <style>
                 header#slideshow-container {
@@ -80,6 +79,9 @@ class HeaderComponent extends HTMLElement {
                     color: var(--fourth-color);
                     font-weight: 600;
                     padding: 1px 12px;
+                }
+               
+                #dot-nav, #slideshow-container .text {
                     text-align: center;
                 }
                 
@@ -110,18 +112,18 @@ class HeaderComponent extends HTMLElement {
                     letter-spacing: 0.3rem;
                 }
                 
-                #fav-slider{
+                #fav-slider {
                     position: absolute;
                     bottom: 0;
                     right: 5rem;
                     font-size: 4rem;
-                    color: var(--first-color);
+                    color: #ededed;
                     cursor: pointer;
                     transition: .5s ease-in-out;
                 }
                 
                  #fav-slider:hover {
-                    color: var(--fourth-color);
+                    color: var(--fourth-color) !important;
                     transition: .5s ease-in-out;
                 }
                 
@@ -136,55 +138,55 @@ class HeaderComponent extends HTMLElement {
                     <div class="mySlides fade">
                         <img src="../../img/header_tutorial/header1.gif" alt="header-img">
                         <div class="text">
-                            <div class="word">TEKST</div>
+                            <div class="word"></div>
                         </div>
                     </div>
         
                     <div class="mySlides fade">
                         <img src="../../img/header_tutorial/header2.gif" alt="header-img">
                         <div class="text">
-                            <div class="word">TEKST</div>
+                            <div class="word"></div>
                         </div>
                     </div>
         
                     <div class="mySlides fade">
                         <img src="../../img/header_tutorial/header3.gif" alt="header-img">
                         <div class="text">
-                            <div class="word">TEKST</div>
+                            <div class="word"></div>
                         </div>
                     </div>
         
                     <div class="mySlides fade">
                         <img src="../../img/header_tutorial/header4.gif" alt="header-img">
                         <div class="text">
-                            <div class="word">TEKST</div>
+                            <div class="word"></div>
                         </div>
                     </div>
         
                     <div class="mySlides fade">
                         <img src="../../img/header_tutorial/header5.gif" alt="header-img">
                         <div class="text">
-                            <div class="word">TEKST</div>
+                            <div class="word"></div>
                         </div>
                     </div>
         
                     <div class="mySlides fade">
                         <img src="../../img/header_tutorial/header6.gif" alt="header-img">
                         <div class="text">
-                            <div class="word">TEKST</div>
+                            <div class="word"></div>
                         </div>
                     </div>
         
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
                 <a class="next" onclick="plusSlides(1)">❯</a>
                 
-                <div id="fav-slider">
+                <div id="fav-slider" onclick="setFavTheme()">
                     <i class='bx bxs-heart'></i>
                 </div>
             </div>
         </header>
 
-        <nav style="text-align:center">
+        <nav id="dot-nav">
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
@@ -199,19 +201,18 @@ class HeaderComponent extends HTMLElement {
 // DEFINICJA ZNACZNIKA NAGŁÓWKA
 customElements.define("header-component", HeaderComponent);
 
+// Initial slide and favourite slide index values
 let slideIndex = 1;
+let favThemeIndex = -1;
 
-setInterval(()=>{
-    plusSlides(1);
-}, 30000);
+// Check if favourite theme not exist than move slider
+setInterval(()=>{ if(favThemeIndex <= 0) plusSlides(1); }, 30000);
 
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
+// Load favourite theme from local storage
+loadFavThemeByLocalStorage();
 
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
+function plusSlides(n) { showSlides(slideIndex += n); }
+function currentSlide(n) { showSlides(slideIndex = n); }
 
 function showSlides(n) {
     let slides = document.getElementsByClassName("mySlides");
@@ -228,6 +229,33 @@ function showSlides(n) {
 
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
+
+    fillHeartImageForFavTheme(slideIndex, favThemeIndex);
+}
+
+// Function set or unset user favourite theme image by global slideIndex. Next update heart image
+function setFavTheme(){
+    if (favThemeIndex < 0 || favThemeIndex !== slideIndex) localStorage.setItem('favThemeIndex', slideIndex);
+    else {
+        localStorage.removeItem('favThemeIndex');
+        favThemeIndex = -1;
+    }
+
+    loadFavThemeByLocalStorage();
+}
+
+// Function load user favourite theme image if exist
+function loadFavThemeByLocalStorage(){
+    let favThemeValue = localStorage.getItem("favThemeIndex");
+    (favThemeValue !== null) ? currentSlide(favThemeIndex = favThemeValue) : currentSlide(slideIndex);
+}
+
+// Function fill heart image when user is on his favourite slide
+function fillHeartImageForFavTheme(slideId, favSlideElementId){
+    let favSlideElement = document.getElementById("fav-slider");
+
+    (slideId.toString() === favSlideElementId) ? favSlideElement.style.color = "var(--fourth-color)"
+        : favSlideElement.style.color = "#ededed";
 }
 
 let words = ['Hej, masz ochotę troche poprogramować?', 'W takim razie bierzmy się do roboty :)',
@@ -275,4 +303,3 @@ var wordflick = function () {
 };
 
 wordflick();
-showSlides(slideIndex);

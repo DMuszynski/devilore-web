@@ -81,18 +81,30 @@ class FooterComponent extends HTMLElement {
                 #start-page-nav {
                     position: relative;
                     display: block;
-                    width: 5rem;
-                    height: 5rem;
+                    width: 3rem;
+                    height: 3rem;
                     border-radius: 50%;
-                }
-                #start-page-nav a {
-                    display: block;
-                    font-size: 3rem;
-                    width: 100%;
-                    height: 100%;
                     background-color: white;
                 }
+                #start-page-nav a {
+                    display: grid;
+                    align-content: center;
+                    justify-content: center;
+                    font-size: 2rem;
+                    color: var(--fourth-color);
+                    width: 100%;
+                    height: 100%;
+
+                }
                 
+                #start-page-nav a {
+                    animation: arrow-up-down .5s infinite alternate;
+                }
+                
+                @keyframes arrow-up-down {
+                    0% { transform: translateY(0.3rem); }
+                    100% { transform: translateY(-0.3rem);}
+                }
             </style>
 
             <footer class="footer-component">

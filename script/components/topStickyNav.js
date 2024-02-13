@@ -167,7 +167,6 @@ class TopStickyNav extends HTMLElement {
                     '<li><a href="#cleanCode">Clean Code</a></li>' +
                     '<li><a href="#programmingtool">Programming Tool</a></li>' +
                     '<li><a href="#portfolio">Portfolio</a></li>' +
-                    '<li><a href="#contact">Contact</a></li>' +
                     '</ul>';
                 menuList.innerHTML= baseMenuListElement;
                 break;

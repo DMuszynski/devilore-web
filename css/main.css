@@ -48,7 +48,7 @@
 #main-nav #view-button:hover {
     height: 2.5rem;
     width: 2.5rem;
-    left: -1.25rem;
+    margin-left: -1.25rem;
     transition: .5s ease-in-out;
 }
 

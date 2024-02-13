@@ -5,10 +5,10 @@ class HeaderComponent extends HTMLElement {
 
     connectedCallback() {
         // RENDEROWANIE SLIDERA NAGŁÓWKOWEGO
-        this.renderSideOptionBarComponent();
+        this.renderHeaderComponent();
     }
 
-    renderSideOptionBarComponent() {
+    renderHeaderComponent() {
         this.innerHTML = `
             <style>
                 header#slideshow-container {

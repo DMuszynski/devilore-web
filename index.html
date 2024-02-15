@@ -20,7 +20,7 @@
     <top-sticky-nav navType="baseTopNav"></top-sticky-nav>
     <side-option-bar sidebarType="compilerOptionIcons"></side-option-bar>
 
-
+    <!--  MAIN CONTENT  -->
     <main id="main-container">
         <article id="main-article">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit
@@ -31,31 +31,27 @@
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </article>
-        <nav id="main-nav" collapsed="false">
-            dasdasd
+        <aside id="main-sidebar" collapsed="false">
+            <nav id="nav-area">
+                <h1>Nawigacja</h1>
+                <ol>
+                    <li>Zmienne</li>
+                </ol>
+            </nav>
             <section id="view-button" onclick="toggleNav()">
                 <i class='bx bx-menu'></i>
             </section>
-        </nav>
+        </aside>
     </main>
 
     <!-- Components -->
     <footer-component></footer-component>
 
-    <script>
-        function toggleNav() {
-            var mainnav = document.getElementById("main-nav");
-            if(mainnav.getAttribute("collapsed") === "true")
-                document.getElementById("main-nav").setAttribute("collapsed", "false");
-            else
-                document.getElementById("main-nav").setAttribute("collapsed", "true");
-        }
-    </script>
-
     <!--  SCRIPTS DEFINITION COMPONENTS  -->
     <script src="script/components/topStickyNav.js" type="text/javascript"></script>
     <script src="script/components/headerComponent.js" type="text/javascript"></script>
     <script src="script/components/footerComponent.js" type="text/javascript"></script>
+    <script src="script/mainContentScript.js" type="text/javascript"></script>
     <script src="script/components/sideOptionBar.js" type="module"></script>
     <script src="script/globalScript.js" type="module"></script>
 </body>

@@ -12,7 +12,15 @@
     max-width: 100%;
 }
 
-#main-nav {
+#nav-area {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    float: right;
+    font-size: 1.5rem;
+}
+
+#main-sidebar {
     position: sticky;
     min-width: 15%;
     max-height: calc(100vh - 15rem);
@@ -20,10 +28,13 @@
     top: 10rem;
     margin-bottom: 10rem;
     transition: 1s ease-in-out;
-    border-left: 1px solid var(--second-color);
+    /*border-left: 1px solid var(--second-color);*/
+
+    border-left: 2px solid var(--second-color);
+
 }
 
-#main-nav #view-button {
+#main-sidebar #view-button {
     position: sticky;
     margin-bottom: 9rem;
     margin-left: -1rem;
@@ -35,7 +46,7 @@
     background-color: #00abf0;
     transition: .5s ease-in-out;
 }
-#main-nav #view-button i {
+#main-sidebar #view-button i {
     position: absolute;
     font-size: 1.5rem;
     top: 50%;
@@ -45,18 +56,18 @@
     transition: 1s ease-in-out;
 }
 
-#main-nav #view-button:hover {
+#main-sidebar #view-button:hover {
     height: 2.5rem;
     width: 2.5rem;
     margin-left: -1.25rem;
     transition: .5s ease-in-out;
 }
 
-#main-nav[collapsed="true"] {
+#main-sidebar[collapsed="true"] {
     margin-right: -15%;
     transition: .5s ease-in-out;
 }
-#main-nav[collapsed="true"] #view-button {
+#main-sidebar[collapsed="true"] #view-button {
     margin-left: -3rem;
     transition: .5s ease-in-out;
 }

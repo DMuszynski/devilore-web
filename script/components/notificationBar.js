@@ -4,7 +4,31 @@ class NotificationBar extends HTMLElement {
     }
 
     connectedCallback() {
+        // EVENT LISTENERS ADD
         this.renderSideOptionBarComponent();
+    }
+
+    disconnectedCallback() {
+        // EVENT LISTENERS REMOVE
+        console.log("I've been removed from the DOM");
+    }
+
+    static get observedAttributes() {
+        // List the attributes we want to trigger the attributeChangedCallback
+        return [ "status" ];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log(`An attribute change! Name: ${name}, Old Value: ${oldValue}, New Value: ${newValue}`);
+        if(name === "status" && newValue === "disabled"){
+            console.log("dis")
+            this.remove();
+        }
+
+    }
+
+    adoptedCallback() {
+        console.log("I've switched to a new DOM!");
     }
 
     renderSideOptionBarComponent() {

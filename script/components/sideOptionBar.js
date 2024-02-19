@@ -104,29 +104,29 @@ class SideOptionBar extends HTMLElement {
             case "compilerOptionIcons":
                 const compilerOptionListElement = darkModeElement +
                     '<a href="https://www.onlinegdb.com/online_java_compiler" data-tooltip="Kopilator Java" target="_blank"> ' +
-                        '<i class="bx bxl-java"></i></a>' +
+                    '<i class="bx bxl-java"></i></a>' +
                     '<a href="https://www.onlinegdb.com/online_c++_compiler" data-tooltip="Kompilator C++" target="_blank">' +
-                        '<i class="bx bxl-c-plus-plus"></i> </a>' +
+                    '<i class="bx bxl-c-plus-plus"></i> </a>' +
                     '<a href="https://www.onlinegdb.com/online_php_interpreter" data-tooltip="Kompilator PHP" target="_blank">' +
-                        '<i class="bx bxl-php"></i></a>' +
+                    '<i class="bx bxl-php"></i></a>' +
                     '<a href="https://www.onlinegdb.com/online_javascript_rhino_interpreter" data-tooltip="Kompilator JS" target="_blank">' +
-                        '<i class="bx bxl-javascript"></i></a>' +
+                    '<i class="bx bxl-javascript"></i></a>' +
                     '<a href="https://sqliteonline.com/" data-tooltip="Kompilator SQL" target="_blank">' +
-                        '<i class="bx bxs-data"></i></a>' + lightModeElement;
+                    '<i class="bx bxs-data"></i></a>' + lightModeElement;
                 sidebarIconList.innerHTML += compilerOptionListElement;
                 break;
             case "socialOptionIcons":
                 const socialOptionListElement = darkModeElement +
                     '<a href="https://github.com/DMuszynski" data-tooltip="Github" target="_blank"> ' +
-                        '<i class="bx bxl-github"></i></a>' +
+                    '<i class="bx bxl-github"></i></a>' +
                     '<a href="https://www.linkedin.com/in/damian-muszy%C5%84ski-7b9a09173/" data-tooltip="LinkedIn" target="_blank">' +
-                        '<i class="bx bxl-linkedin"></i> </a>' +
+                    '<i class="bx bxl-linkedin"></i> </a>' +
                     '<a href="https://www.facebook.com/dmuszynski.acc/" data-tooltip="Facebook" target="_blank">' +
-                        '<i class="bx bxl-facebook"></i></a>' +
+                    '<i class="bx bxl-facebook"></i></a>' +
                     '<a href="https://www.instagram.com/_dmuszynski/" data-tooltip="Instagram" target="_blank">' +
-                        '<i class="bx bxl-instagram"></i></a>' +
+                    '<i class="bx bxl-instagram"></i></a>' +
                     '<a href="#" data-tooltip="Skopiuj mail" class="mail" onClick="copyMailLink()">' +
-                        '<i class="bx bxl-gmail"></i></a>' + lightModeElement;
+                    '<i class="bx bxl-gmail"></i></a>' + lightModeElement;
                 sidebarIconList.innerHTML += socialOptionListElement;
                 break;
         }

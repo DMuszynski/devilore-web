@@ -85,6 +85,11 @@ class HeaderComponent extends HTMLElement {
                     text-align: center;
                 }
                 
+                #dot-nav{
+                    position: relative;
+                    z-index: 999;
+                }
+                
                 .dot {
                     cursor: pointer;
                     height: 1rem;
@@ -171,7 +176,14 @@ class HeaderComponent extends HTMLElement {
                     </div>
         
                     <div class="mySlides fade">
-                        <img src="../../img/header_tutorial/header6.gif" alt="header-img">
+                        <img src="../../img/header_tutorial/header13.gif" alt="header-img">
+                        <div class="text">
+                            <div class="word"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                        <img src="../../img/header_tutorial/header9.gif" alt="header-img">
                         <div class="text">
                             <div class="word"></div>
                         </div>
@@ -192,7 +204,8 @@ class HeaderComponent extends HTMLElement {
             <span class="dot" onclick="currentSlide(3)"></span>
             <span class="dot" onclick="currentSlide(4)"></span>
             <span class="dot" onclick="currentSlide(5)"></span>
-            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
         </nav>
         `;
     }
@@ -211,7 +224,7 @@ setInterval(()=>{ if(favThemeIndex <= 0) plusSlides(1); }, 30000);
 // Load favourite theme from local storage
 loadFavThemeByLocalStorage();
 
-function plusSlides(n) { showSlides(slideIndex += n); }
+function plusSlides(n) { showSlides(slideIndex = Number(slideIndex) + Number(n)); }
 function currentSlide(n) { showSlides(slideIndex = n); }
 
 function showSlides(n) {

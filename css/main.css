@@ -5,38 +5,34 @@
     display: inline-flex;
     width: calc(100% - 5rem);
     border-radius: 8px;
+    font-size: 1.3rem;
 }
 
 #main-article {
     float: left;
-    max-width: 100%;
-}
-
-#nav-area {
     width: 100%;
-    height: 100%;
-    padding: 2rem;
-    float: right;
-    font-size: 1.5rem;
+    min-width: 80%;
+    padding: 1rem;
 }
 
 #main-sidebar {
     position: sticky;
-    min-width: 15%;
-    max-height: calc(100vh - 15rem);
+    min-width: calc(25% - 2px);
+    max-width: calc(25% - 2px);
+    /*max-height: calc(100vh - 15rem);*/
+    max-height: 50vh;
     float:right;
     top: 10rem;
     margin-bottom: 10rem;
     transition: 1s ease-in-out;
-    /*border-left: 1px solid var(--second-color);*/
-
     border-left: 2px solid var(--second-color);
 
 }
 
 #main-sidebar #view-button {
     position: sticky;
-    margin-bottom: 9rem;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
     margin-left: -1rem;
     top: 50%;
     width: 2rem;
@@ -64,10 +60,78 @@
 }
 
 #main-sidebar[collapsed="true"] {
-    margin-right: -15%;
+    margin-right: -25%;
     transition: .5s ease-in-out;
 }
 #main-sidebar[collapsed="true"] #view-button {
     margin-left: -3rem;
     transition: .5s ease-in-out;
+}
+
+main h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+a[id] h1{
+    padding-top: 7rem;
+    margin-top: -7rem;
+}
+
+#main-article p {
+    margin-bottom: 1rem;
+}
+
+#nav-area {
+    width: calc(90% - 4rem);
+    height: 100%;
+    padding: 2rem;
+    float: left;
+}
+
+#nav-area ol li {
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+#nav-area ol li a{
+    text-decoration: none;
+    color: var(--third-color);
+}
+
+@media screen and (min-width: 0px) and (orientation: portrait) {
+    #main-article {
+        width: 100%;
+        min-width: 65%;
+    }
+    #main-sidebar {
+        min-width: calc(35% - 2px);
+        max-width: calc(35% - 2px);
+    }
+    #main-sidebar[collapsed="true"] {
+        margin-right: -35%;
+    }
+    #nav-area{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 768px) and (orientation: portrait) {
+    #main-article {
+        width: 100%;
+        min-width: 70%;
+    }
+    #main-sidebar {
+        min-width: calc(30% - 2px);
+        max-width: calc(30% - 2px);
+    }
+    #main-sidebar[collapsed="true"] {
+        margin-right: -30%;
+    }
+
+    #nav-area{
+        width: 100%;
+    }
 }

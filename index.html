@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=2, user-scalable=no" >
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
     <title>Devilore - IT Coaching</title>
 
     <!-- LOCAL CSS LINKS AND FAVICON -->
@@ -13,6 +13,9 @@
 
     <!-- OTHER DOWNLOAD LINKS LOCATION -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Component Definition  -->
+    <script src="script/components/footer-component/footer-component.js" type="text/javascript"></script>
 </head>
 <body darkmode>
     <!-- Components -->
@@ -23,9 +26,12 @@
     <!--  MAIN CONTENT  -->
     <main id="main-container">
         <article id="main-article">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit
-            Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit
+            <a id="wprowadzenie"><h1>Wprowadzenie</h1></a>
+
+            <p>
+                Nazywam się Damian Muszyński i buduję tą strone aby moi uczniowie oraz internauci korzystali z moich
+                materiałów szkoleniowych
+            </p>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -35,10 +41,11 @@
             <nav id="nav-area">
                 <h1>Nawigacja</h1>
                 <ol>
-                    <li>Zmienne</li>
+                    <li><a href="#wprowadzenie">Wprowadzenie do zmiennych i innych</a></li>
+                    <li>Typy danych zmienych</li>
                 </ol>
             </nav>
-            <section id="view-button" onclick="toggleNav()">
+            <section id="view-button">
                 <i class='bx bx-menu'></i>
             </section>
         </aside>
@@ -48,10 +55,10 @@
     <footer-component></footer-component>
 
     <!--  SCRIPTS DEFINITION COMPONENTS  -->
-    <script src="script/components/topStickyNav.js" type="text/javascript"></script>
+    <script src="script/components/topStickyNav.js" type="module"></script>
     <script src="script/components/headerComponent.js" type="text/javascript"></script>
-    <script src="script/components/footerComponent.js" type="text/javascript"></script>
-    <script src="script/mainContentScript.js" type="text/javascript"></script>
+
+    <script src="script/mainContentScript.js" type="module"></script>
     <script src="script/components/sideOptionBar.js" type="module"></script>
     <script src="script/globalScript.js" type="module"></script>
 </body>

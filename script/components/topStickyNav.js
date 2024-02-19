@@ -1,5 +1,5 @@
 // GÓRNY PASEK NAWIGACJI - HOME, JAVA, PORTFOLIO, CONTACT  -->
-class TopStickyNav extends HTMLElement {
+export class TopStickyNav extends HTMLElement {
     constructor() {
         super();
     }
@@ -29,7 +29,7 @@ class TopStickyNav extends HTMLElement {
                     transform: translate(calc(50vw - 50%));
                     background-color: var(--first-color);
                     box-shadow: 0 1px 8px 0 rgba(0,0,0,0.4);   
-                    z-index: 100;
+                    z-index: 1000;
                 }
                 
                 #stickyNav, #stickyNav #menu-logo{
@@ -146,7 +146,7 @@ class TopStickyNav extends HTMLElement {
                 <section id="menu-logo">
                     <a href="https://devilore.dev"><span id="logo" >Devilore.</span> IT Coaching</a>
                 </section>
-                <section id="menu-icon" onclick="displayCollapsedMenu()">
+                <section id="menu-icon">
                     <i class='bx bx-menu'></i>
                 </section>
                 <section id="menu-list">
@@ -190,15 +190,10 @@ customElements.define("top-sticky-nav", TopStickyNav);
 //  HAMBURGER MENU
 
 // Inicjalizacja zawijania paska nawigacyjnego
-setCollapseNavOption();
-
-// Zmiana zawijania paska nawigacyjnego w przypadku manipulacji wielkością strony
-addEventListener("resize", () => {
-    setCollapseNavOption();
-});
+setCollapseTopNavOption();
 
 // Funkcja ustawia zawijanie paska nawigacyjnego dla określonej wartości szerokości okna
-function setCollapseNavOption() {
+export function setCollapseTopNavOption() {
     const windowMinSizeForNavCollapse = 768;
     if (window.innerWidth > windowMinSizeForNavCollapse)
         document.getElementById("menu-list").toggleAttribute("collapsed", false);
@@ -206,7 +201,6 @@ function setCollapseNavOption() {
         document.getElementById("menu-list").toggleAttribute("collapsed", true);
 }
 
-// Funkcja sprawdza aktualny stan formy wyświetlenia paska nawigacyjnego i decyduje czy ma być rozwijany czy nie
 function displayCollapsedMenu() {
     let menuListElement = document.getElementById("menu-list");
     let isCollapsed = menuListElement.hasAttribute("collapsed");
@@ -217,3 +211,7 @@ function displayCollapsedMenu() {
     else
         menuListElement.setAttribute("collapsed", "false");
 }
+
+// Wyświetlenie menu górnej nawigacji po przyciśnięciu ikony id menu-icon
+const hamMenuElement = document.getElementById("menu-icon");
+hamMenuElement.onclick = function () { displayCollapsedMenu(); }

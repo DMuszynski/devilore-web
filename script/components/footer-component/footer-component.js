@@ -3,7 +3,7 @@ class FooterComponent extends HTMLElement {
     constructor() {
         super();
         // Open DOM shadow mode
-        // this.attachShadow({ mode: 'open' });
+        this.attachShadow({ mode: 'open' });
     }
 
     // Render footer component
@@ -12,7 +12,7 @@ class FooterComponent extends HTMLElement {
     }
 
     renderFooterComponent() {
-        this.innerHTML = `
+        this.shadowRoot.innerHTML = `
 
             <!-- Style links  -->
             <link rel="stylesheet" href="script/components/footer-component/footer-component.css"/>

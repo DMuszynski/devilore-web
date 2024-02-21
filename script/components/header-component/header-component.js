@@ -1,15 +1,31 @@
+// import {handleChangeColorThemeAction} from "../../colorThemeMode";
+
 class HeaderComponent extends HTMLElement {
+    slideIndex = 1;
+    favThemeIndex = -1;
+
     constructor() {
         super();
+        // Open DOM shadow mode
+        this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
         // RENDEROWANIE SLIDERA NAGŁÓWKOWEGO
         this.renderHeaderComponent();
+
+
+        this.shadowRoot.querySelector(".prev").onclick = () => { this.plusSlides(-1); };
+        this.shadowRoot.querySelector(".next").onclick = () => { this.plusSlides(1); };
+        this.shadowRoot.querySelector("#fav-slider").onclick = () => { this.setFavTheme() };
+        // // Load favourite theme from local storage
+        this.loadFavThemeByLocalStorage();
+
     }
 
+
     renderHeaderComponent() {
-        this.innerHTML = `
+        this.shadowRoot.innerHTML = `
             <style>
                 header#slideshow-container {
                     width: calc(100% - 10rem);
@@ -137,7 +153,9 @@ class HeaderComponent extends HTMLElement {
                     to {opacity: 1}
                 }
             </style>
-
+            <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                
             <header id="slideshow-container">
                 <div id="slideshow-mask">
                     <div class="mySlides fade">
@@ -189,10 +207,10 @@ class HeaderComponent extends HTMLElement {
                         </div>
                     </div>
         
-                <a class="prev" onclick="plusSlides(-1)">❮</a>
-                <a class="next" onclick="plusSlides(1)">❯</a>
+                <a class="prev">❮</a>
+                <a class="next">❯</a>
                 
-                <div id="fav-slider" onclick="setFavTheme()">
+                <div id="fav-slider">
                     <i class='bx bxs-heart'></i>
                 </div>
             </div>
@@ -209,110 +227,162 @@ class HeaderComponent extends HTMLElement {
         </nav>
         `;
     }
+
+    plusSlides(n) { this.showSlides(this.slideIndex = Number(this.slideIndex) + Number(n)); }
+    currentSlide(n) { this.showSlides(this.slideIndex = n); }
+
+    showSlides(n) {
+        let slides = this.shadowRoot.querySelectorAll(".mySlides")
+        let dots = this.shadowRoot.querySelectorAll(".dot");
+
+        if (n > slides.length) this.slideIndex = 1;
+        if (n < 1) this.slideIndex = slides.length;
+
+        for (let i = 0; i < slides.length; i++)
+            slides[i].style.display = "none";
+
+        for (let i = 0; i < dots.length; i++)
+            dots[i].className = dots[i].className.replace(" active", "");
+
+        slides[this.slideIndex-1].style.display = "block";
+        dots[this.slideIndex-1].className += " active";
+
+        this.fillHeartImageForFavTheme(this.slideIndex, this.favThemeIndex);
+    }
+
+
+    // Function load user favourite theme image if exist
+    loadFavThemeByLocalStorage(){
+        let favThemeValue = localStorage.getItem("favThemeIndex");
+        (favThemeValue !== null) ? this.currentSlide(this.favThemeIndex = favThemeValue) : this.currentSlide(this.slideIndex);
+    }
+
+
+    fillHeartImageForFavTheme(slideId, favSlideElementId){
+        let favSlideElement = this.shadowRoot.getElementById("fav-slider");
+
+        (slideId.toString() === favSlideElementId) ? favSlideElement.style.color = "var(--fourth-color)"
+            : favSlideElement.style.color = "#ededed";
+    }
+
+    // Function set or unset user favourite theme image by global slideIndex. Next update heart image
+    setFavTheme() {
+        if (this.favThemeIndex < 0 || this.favThemeIndex !== this.slideIndex) localStorage.setItem('favThemeIndex', this.slideIndex);
+        else {
+            localStorage.removeItem('favThemeIndex');
+            this.favThemeIndex = -1;
+        }
+
+        this.loadFavThemeByLocalStorage();
+    }
 }
 
 // DEFINICJA ZNACZNIKA NAGŁÓWKA
 customElements.define("header-component", HeaderComponent);
 
-// Initial slide and favourite slide index values
-let slideIndex = 1;
-let favThemeIndex = -1;
 
-// Check if favourite theme not exist than move slider
-setInterval(()=>{ if(favThemeIndex <= 0) plusSlides(1); }, 30000);
 
-// Load favourite theme from local storage
-loadFavThemeByLocalStorage();
 
-function plusSlides(n) { showSlides(slideIndex = Number(slideIndex) + Number(n)); }
-function currentSlide(n) { showSlides(slideIndex = n); }
+// // Initial slide and favourite slide index values
+// let slideIndex = 1;
+// let favThemeIndex = -1;
+//
+// // Check if favourite theme not exist than move slider
+// setInterval(()=>{ if(favThemeIndex <= 0) plusSlides(1); }, 30000);
+//
+// // Load favourite theme from local storage
+// loadFavThemeByLocalStorage();
+//
+// function plusSlides(n) { showSlides(slideIndex = Number(slideIndex) + Number(n)); }
+// function currentSlide(n) { showSlides(slideIndex = n); }
+//
+// function showSlides(n) {
+//     let slides = document.getElementsByClassName("mySlides");
+//     let dots = document.getElementsByClassName("dot");
+//
+//     if (n > slides.length) slideIndex = 1;
+//     if (n < 1) slideIndex = slides.length;
+//
+//     for (let i = 0; i < slides.length; i++)
+//         slides[i].style.display = "none";
+//
+//     for (let i = 0; i < dots.length; i++)
+//         dots[i].className = dots[i].className.replace(" active", "");
+//
+//     slides[slideIndex-1].shadowRoot.style.display = "block";
+//     dots[slideIndex-1].className += " active";
+//
+//     fillHeartImageForFavTheme(slideIndex, favThemeIndex);
+// }
+//
+// // Function set or unset user favourite theme image by global slideIndex. Next update heart image
+// function setFavTheme(){
+//     if (favThemeIndex < 0 || favThemeIndex !== slideIndex) localStorage.setItem('favThemeIndex', slideIndex);
+//     else {
+//         localStorage.removeItem('favThemeIndex');
+//         favThemeIndex = -1;
+//     }
+//
+//     loadFavThemeByLocalStorage();
+// }
+//
+// // Function load user favourite theme image if exist
+// function loadFavThemeByLocalStorage(){
+//     let favThemeValue = localStorage.getItem("favThemeIndex");
+//     (favThemeValue !== null) ? currentSlide(favThemeIndex = favThemeValue) : currentSlide(slideIndex);
+// }
+//
+// // Function fill heart image when user is on his favourite slide
+// function fillHeartImageForFavTheme(slideId, favSlideElementId){
+//     let favSlideElement = document.getElementById("fav-slider");
+//
+//     (slideId.toString() === favSlideElementId) ? favSlideElement.style.color = "var(--fourth-color)"
+//         : favSlideElement.style.color = "#ededed";
+// }
+//
+// let words = ['Hej, masz ochotę troche poprogramować?', 'W takim razie bierzmy się do roboty :)',
+//         'Nauczę cię języka Java', 'Design patterns', 'oraz Clean Coding'],
+//     part,
+//     i = 0,
+//     offset = 0,
+//     len = words.length,
+//     forwards = true,
+//     skip_count = 0,
+//     skip_delay = 20,
+//     speed = 70;
+// var wordflick = function () {
+//     setInterval(function () {
+//         if (forwards) {
+//             if (offset >= words[i].length) {
+//                 ++skip_count;
+//                 if (skip_count === skip_delay) {
+//                     forwards = false;
+//                     skip_count = 0;
+//                 }
+//             }
+//         }
+//         else {
+//             if (offset === 0) {
+//                 forwards = true;
+//                 i++;
+//                 offset = 0;
+//                 if (i >= len) {
+//                     i = 0;
+//                 }
+//             }
+//         }
+//         part = words[i].substr(0, offset);
+//         if (skip_count === 0) {
+//             if (forwards) {
+//                 offset++;
+//             }
+//             else {
+//                 offset--;
+//             }
+//         }
+//         $('.word').text(part);
+//     },speed);
+// };
+//
+// wordflick();
 
-function showSlides(n) {
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-
-    if (n > slides.length) slideIndex = 1;
-    if (n < 1) slideIndex = slides.length;
-
-    for (let i = 0; i < slides.length; i++)
-        slides[i].style.display = "none";
-
-    for (let i = 0; i < dots.length; i++)
-        dots[i].className = dots[i].className.replace(" active", "");
-
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-
-    fillHeartImageForFavTheme(slideIndex, favThemeIndex);
-}
-
-// Function set or unset user favourite theme image by global slideIndex. Next update heart image
-function setFavTheme(){
-    if (favThemeIndex < 0 || favThemeIndex !== slideIndex) localStorage.setItem('favThemeIndex', slideIndex);
-    else {
-        localStorage.removeItem('favThemeIndex');
-        favThemeIndex = -1;
-    }
-
-    loadFavThemeByLocalStorage();
-}
-
-// Function load user favourite theme image if exist
-function loadFavThemeByLocalStorage(){
-    let favThemeValue = localStorage.getItem("favThemeIndex");
-    (favThemeValue !== null) ? currentSlide(favThemeIndex = favThemeValue) : currentSlide(slideIndex);
-}
-
-// Function fill heart image when user is on his favourite slide
-function fillHeartImageForFavTheme(slideId, favSlideElementId){
-    let favSlideElement = document.getElementById("fav-slider");
-
-    (slideId.toString() === favSlideElementId) ? favSlideElement.style.color = "var(--fourth-color)"
-        : favSlideElement.style.color = "#ededed";
-}
-
-let words = ['Hej, masz ochotę troche poprogramować?', 'W takim razie bierzmy się do roboty :)',
-        'Nauczę cię języka Java', 'Design patterns', 'oraz Clean Coding'],
-    part,
-    i = 0,
-    offset = 0,
-    len = words.length,
-    forwards = true,
-    skip_count = 0,
-    skip_delay = 20,
-    speed = 70;
-var wordflick = function () {
-    setInterval(function () {
-        if (forwards) {
-            if (offset >= words[i].length) {
-                ++skip_count;
-                if (skip_count === skip_delay) {
-                    forwards = false;
-                    skip_count = 0;
-                }
-            }
-        }
-        else {
-            if (offset === 0) {
-                forwards = true;
-                i++;
-                offset = 0;
-                if (i >= len) {
-                    i = 0;
-                }
-            }
-        }
-        part = words[i].substr(0, offset);
-        if (skip_count === 0) {
-            if (forwards) {
-                offset++;
-            }
-            else {
-                offset--;
-            }
-        }
-        $('.word').text(part);
-    },speed);
-};
-
-wordflick();

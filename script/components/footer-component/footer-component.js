@@ -8,17 +8,16 @@ class FooterComponent extends HTMLElement {
 
     // Render footer component
     connectedCallback() {
-        this.renderFooterComponent();
+        this.#renderFooterComponent();
     }
 
-    renderFooterComponent() {
+    #renderFooterComponent() {
         this.shadowRoot.innerHTML = `
-
             <!-- Style links  -->
             <link rel="stylesheet" href="script/components/footer-component/footer-component.css"/>
             <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
 
-            <!-- Component tags structure -->
+            <!-- Footer tags structure -->
             <footer id="footer-component">
             
                 <!-- Social navigation icons list -->

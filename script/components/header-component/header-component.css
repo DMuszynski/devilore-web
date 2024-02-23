@@ -1,4 +1,4 @@
-header#slideshow-container {
+#slider-container {
     width: calc(100% - 10rem);
     transform: translate(calc(50vw - 50%));
     height: 30rem;
@@ -6,20 +6,20 @@ header#slideshow-container {
     box-shadow: 0 1px 8px 0 rgba(0,0,0,0.6);
 }
 
-#slideshow-container #slideshow-mask {
+#slider-container #slider-mask {
     position: relative;
     width: 100%;
     height: 100%;
     mask-image: linear-gradient(black 85%, transparent 115%);
 }
 
-#slideshow-container .mySlides {
+#slider-container .mySlides {
     width: 100%;
     height: 100%;
     display: none;
 }
 
-#slideshow-container .mySlides img {
+#slider-container .mySlides img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -27,7 +27,7 @@ header#slideshow-container {
     opacity: .8;
 }
 
-#slideshow-container #prev, #slideshow-container .next {
+#slider-container #prev, #slider-container #next {
     cursor: pointer;
     position: absolute;
     top: calc(50% - 3rem);
@@ -44,17 +44,17 @@ header#slideshow-container {
     user-select: none;
 }
 
-#slideshow-container .next {
+#slider-container #next {
     right: 0;
 }
 
-#slideshow-container .prev:hover, #slideshow-container .next:hover {
+#slider-container #prev:hover, #slider-container #next:hover {
     background-color: var(--fourth-color);
     opacity: 1;
     color: #ededed;
 }
 
-#slideshow-container .text {
+#slider-container .text {
     position: absolute;
     width: auto;
     background: var(--third-color);
@@ -68,7 +68,7 @@ header#slideshow-container {
     padding: 1px 12px;
 }
 
-#dot-nav, #slideshow-container .text {
+#dot-nav, #slider-container .text {
     text-align: center;
 }
 
